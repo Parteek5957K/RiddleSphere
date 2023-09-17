@@ -1,0 +1,57 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+    <div class="intro-container">
+		<img src="{% static 'images/intro.png' %}" class="intro">
+	</div>
+
+    {% include 'tiles.html' %}
+    {% include 'faq.html' %}
+
+    <div class="foot">
+        <div>
+            <div class="part">
+                <div class="pfp"></div>
+                <div class="name"><a class="link-remove" target="_blank" href="https://www.linkedin.com/in/guryanshsingla/"><strong>GURYANSH SINGLA</strong></a></div>
+            </div>
+            <div class="part">
+                <div class="pfp"></div>
+                <div class="name"><a class="link-remove" target="_blank" href="http://linkedin.com/in/lovely-bansal-024802254"><strong>LOVELY BANSAL</strong></a></div>
+            </div>
+        </div>
+    <div>
+        <div class="part">
+            <div class="pfp"></div>
+            <div class="name"><a class="link-remove" target="_blank" href="https://www.linkedin.com/in/parteek-mittal-7a35b4271"><strong>PARTEEK MITTAL</strong></a></div>
+        </div>
+        <div class="part">
+            <div class="pfp"></div>
+            <div class="name"><a class="link-remove" target="_blank" href="https://www.linkedin.com/in/preksha-dadoo-a30109239"><strong>PREKSHA DADOO</strong></a></div>
+        </div>
+    </div>
+    <div>
+        <div class="part">
+            <div class="pfp"></div>
+            <div class="name"><a class="link-remove" target="_blank" href="https://www.linkedin.com/in/rythm-gagneja-a6a986264/"><strong>RYTHM GAGNEJA</strong></a></div>
+        </div>
+    </div>
+    <div class="part2">
+
+        <div class="part3">
+            <p  style="font-size: larger;display: block;margin-left: 50px;">Copyright Policy</p>
+            <p  style="font-size: larger; margin-top:8px; display: block;margin-left: 50px;">Privacy Policy</p>
+{#            <p style="font-size: larger; margin-top:8px;display: inline-block;margin-left: 50px;">FeedBack</p>#}
+        </div>
+
+        <div class="Team">
+
+                <p style="margin-top: -20px;margin-left: 20px;font-size: 60px;font-weight: bold;" class="clr">From &nbsp;Team</p>
+                <!-- <img src="images/logo.png" class="pfp"
+                style="margin-top: 0px;margin-left: 10px;"
+                alt=""> -->
+                <p style="margin-top: -20px;margin-left: 10px;font-size:60px;font-weight: bold;" class="clr"> CodeFusion</p>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

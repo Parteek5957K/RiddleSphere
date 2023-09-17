@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RiddleSphere - Homepage</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}"/>
+</head>
+<body>
+{% include 'navbar.html' %}
+{% if not request.user.is_authenticated %}
+    {% include 'login.html' %}
+{% endif %}
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% block content %}
+
+{% endblock %}
+<script src="{% static 'script/script.js' %}"></script>
+</body>
+</html>
