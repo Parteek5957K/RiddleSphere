@@ -1,0 +1,290 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.background-image {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+
+[name="top"] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+[name="top-centre"] {
+    position: fixed;
+    top: 0;
+    left: 38%;
+    right: 38%;
+    margin-top: 0.48%;
+}
+
+[name="bottom"] {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+[name="left"] {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+}
+
+[name="right"] {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+}
+
+@font-face {
+    font-family: 'tickingbombbb';
+    src: url('TickingTimebombBB.woff') format('woff');
+}
+
+.timer {
+    position: fixed;
+    top: 2.35%;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'tickingbombbb';
+    font-size: 28px;
+    font-weight: semi-bold;
+    color: aqua;
+}
+
+.game-buttons {
+    position: fixed;
+    top: 2%;
+    display: flex;
+    right: 2%;
+}
+
+.game-buttons button {
+    height: 9.25vh;
+    width: 9.25vh;
+}
+
+.messages {
+    position: absolute;
+    top: 10vh;
+    right: 2%;
+    height: auto;
+    width: 25vh;
+}
+
+.message p {
+    top: 0;
+    position: absolute;
+    color:white;
+    margin-left:12.5%;
+    margin-right:15%;
+    width:100%;
+    opacity:0.9;
+}
+
+
+#backButton {
+    border: none;
+    background: none;
+    cursor: pointer;
+    z-index: 10;
+    position: relative;
+    top: 0;
+    left: 0;
+    position: inherit;
+    height: 10vh;
+    width: 10vh;
+}
+
+#coffeeButton {
+
+    border: none;
+    background: none;
+    cursor: pointer;
+
+/*&:focus {*/
+/*  outline: 2px dashed #17171D;*/
+/*}*/
+/*&:hover {*/
+
+/*svg {*/
+/*    transform: scale(1.1);*/
+/*}*/
+/*}*/
+&
+::-moz-focus-inner {
+    border: 0;
+}
+
+svg {
+    outline: none;
+    transition: transform 0.15s linear;
+}
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    margin-top: 0.5%;
+}
+
+.outer {
+    position: relative;
+    height: 80%;
+    aspect-ratio: 16/9;
+    min-width: 80vh;
+    box-sizing: border-box;
+}
+
+.inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #335D94;
+    border: 10px double #4E76A6;
+    box-sizing: border-box;
+}
+
+.inner img {
+    width: 100%;
+    height: 100%;
+}
+
+.pm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .8);
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: center;
+    align-content: center;
+    z-index: 2000;
+    height: 100vh;
+
+}
+
+.popmenu {
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.popmenu img {
+    position: absolute;
+    height: 65%;
+    width: 100%
+}
+
+.container-x {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(27, 150, 156, 0.455);
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+    margin-top: -5%;
+    padding: 10%;
+}
+
+.escape {
+    font-size: 300%;
+    margin-left: 25%;
+    font-weight: bolder;
+}
+
+.content-x {
+    /*margin-top: -2%;*/
+    font-size: x-large;
+    font-weight: 800;
+    margin-bottom: 1%;
+    margin-left: 5%;
+}
+
+.thanks {
+    height: 70px;
+    width: 170px;
+    border-radius: 50px;
+    border: none;
+    margin-left: 34%;
+    background-color: #3dab21;
+    color: white;
+    margin-top: 7%;
+    cursor:pointer;
+    font-size: larger;
+    font-weight: 500;
+    padding:15px;
+}
+
+.confetti-button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    height: 100%;
+    margin-left: 32.5%;
+    margin-top: 5%;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    text-align: center;
+    background: #24cfaa;
+    box-shadow: 3px 3px 8px #303030a4,
+    3px 3px 8px #2c2c2c7e;
+    transition: 0.5s;
+}
+
+.confetti-button:hover {
+    background: #2fdbb6;
+}
+
+.confetti-button:active {
+    background: #1da88a;
+}
+
+.button-wrapper {
+    position: relative;
+    width: 100%;
+    height: 60px;
+}
+
+.button-wrapper canvas {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
