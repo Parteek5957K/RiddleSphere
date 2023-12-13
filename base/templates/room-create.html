@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RiddleSphere - Room Creation Page</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}"/>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    {{ wizard.management_form }}
+
+    {% if wizard.form.forms %}
+        {{ wizard.form.management_form }}
+        {% for form in wizard.form.forms %}
+            {{ form }}
+        {% endfor %}
+    {% else %}
+        {{ wizard.form }}
+    {% endif %}
+
+    {% if wizard.steps.prev %}
+        <button name="{{ wizard.steps.prev }}" type="submit">Previous</button>
+    {% endif %}
+    <input type="submit" value="{{ wizard.steps.current }}"/>
+    {% if wizard.steps.next %}
+        <button name="{{ wizard.steps.next }}" type="submit">Next</button>
+    {% endif %}
+</form>
+<script src="{% static 'script/script.js' %}"></script>
+</body>
+</html>

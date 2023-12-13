@@ -1,0 +1,110 @@
+{% extends 'room.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="background-image" style="background-image: url({% static 'images/bunker-room-bg.jpg' %})"></div>
+
+    <div class="container">
+        <div class="outer">
+            <div class="inner" id="box">
+
+                <img id="myImage" src="{% static 'images/bunker.png' %}" alt="Example Image" usemap="#default-map">
+                <map name="default-map">
+                    <area shape="rect" coords="550,180,700,320" href="" onclick="loadIframe(event)"
+                          alt="Default Clickable Area">
+                </map>
+                <map name="fullscreen-map">
+                    <area shape="rect" coords="630,200,830,350" href="" onclick="loadIframe(event)"
+                          alt="Fullscreen Clickable Area">
+                </map>
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+        function loadIframe(event) {
+            event.preventDefault();
+
+            var boxElement = document.getElementById('box');
+
+            if (boxElement) {
+                var previousContent = boxElement.innerHTML;
+                var iframe = document.createElement('iframe');
+                iframe.src = '{% url "quiz" %}';
+                iframe.style.border = 'none';
+                iframe.width = '100%';
+                iframe.height = '100%';
+
+                boxElement.innerHTML = '';
+                boxElement.appendChild(iframe);
+                var buttonElement = document.createElement("button");
+                buttonElement.id = "backButton";
+
+                var imgElement = document.createElement("img");
+                imgElement.src = '{% static "images/back.svg" %}';
+                buttonElement.appendChild(imgElement);
+                boxElement.appendChild(buttonElement);
+
+                buttonElement.addEventListener("click", function () {
+                    boxElement.innerHTML = previousContent;
+                });
+            }
+        }
+
+
+        // Function to check fullscreen status
+        function isFullscreen() {
+            return (
+                document.fullscreenElement ||
+                document.webkitFullscreenElement ||
+                document.mozFullScreenElement ||
+                document.msFullscreenElement
+            );
+        }
+
+        // Function to toggle fullscreen
+        function toggleFullscreen() {
+            var image = document.getElementById("myImage");
+            if (isFullscreen()) {
+                image.useMap = "#default-map";
+                // If the document is in fullscreen mode, exit fullscreen
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            } else {
+
+                image.useMap = "#fullscreen-map";
+                // If the document is not in fullscreen mode, request fullscreen for the document
+                var documentElement = document.documentElement;
+                if (documentElement.requestFullscreen) {
+                    documentElement.requestFullscreen();
+                } else if (documentElement.webkitRequestFullscreen) {
+                    documentElement.webkitRequestFullscreen();
+                } else if (documentElement.mozRequestFullScreen) {
+                    documentElement.mozRequestFullScreen();
+                } else if (documentElement.msRequestFullscreen) {
+                    documentElement.msRequestFullscreen();
+                }
+            }
+        }
+
+        document.addEventListener("fullscreenchange", function () {
+                if (!isFullscreen()) {
+                    var image = document.getElementById("myImage");
+                    image.useMap = "#default-map";
+                }
+            }
+        );
+
+    </script>
+    <div class="puzzle" id="puzzle1">Puzzle 1 Content</div>
+    <div class="puzzle" id="puzzle2">Puzzle 2 Content</div>
+{% endblock content %}
+

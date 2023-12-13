@@ -1,0 +1,15 @@
+{% load static %}
+<div>
+        <p class="name-ask">Solve the puzzle</p>
+        <p class="just">Next is easier promise</p>
+        <div>
+            <img class="images" src="{% static 'images/4.jpg' %}" alt="">
+        </div>
+        <div class="input-field">
+            <input id="answer" type="text" placeholder="Type your answer here..." required>
+            <i class="uil uil-envelope icon"></i>
+        </div>
+        <p></p>
+        <button class="OK" onclick="checkAnswer()">OK &check;</button>
+        <p class="enter">press <strong>Enter ↵</strong></p>
+    </div>

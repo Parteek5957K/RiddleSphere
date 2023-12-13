@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-4!h-t)#)s@o03)^w+_bu*v_+clpx@z*whg(lsmk09g-_@ml61o'
+SECRET_KEY = 'django-insecure-q11lxr1xa#*+q@(gk*lp)!g$4x4ab36u2a=7c9gdot!tc2=_z2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'base'
+    'base', 'room', 'puzzle'
 ]
 
 AUTH_USER_MODEL = 'base.User'
@@ -78,12 +78,8 @@ WSGI_APPLICATION = 'riddlesphere.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'riddlesphere',
-        'USER': 'root',
-        'PASSWORD':'2324',
-        'HOST':'localhost',
-        'PORT':'3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

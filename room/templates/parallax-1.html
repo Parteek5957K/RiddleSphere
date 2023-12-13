@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'styles/parallax-1.css' %}">
+</head>
+<body>
+<header style="top: 0px;">
+    <a href="#" class="logo">Riddle Sphere</a>
+    <ul>
+        <li><a href="{% url 'home' %}" class="active">Home</a></li>
+        <li><a href="#" onclick="About()">About</a></li>
+        <li><a href="#" onclick="Rules()">Rules</a></li>
+    </ul>
+</header>
+<section class="zoom" style="background: url({% static 'images/p1/bg.jpg' %});">
+    <img src="{% static 'images/p1/mountain1.png' %}" id="layer1">
+    <img src="{% static 'images/p1/mountain2.png' %}" id="layer2">
+    <img src="{% static 'images/p1/text.png' %}" id="text">
+</section>
+<section class="content">
+    <h2>Mountain Echo</h2>
+
+        <p id="desc">{% for des in desc %}{{ des }}<br><br>{% endfor %}</p>
+
+</section>
+
+<div class="button-container">
+    <a href="{% url 'room-bunker' %}">
+        <button class="button">Start →<span></span></button>
+    </a>
+</div>
+<script type="text/javascript">
+    var layer1 = document.getElementById('layer1')
+    scroll = window.pageYOffset;
+    document.addEventListener('scroll',
+        function (e) {
+            var offset = window.pageYOffset;
+            scroll = offset;
+            layer1.style.width = (100 + scroll / 5) + '%';
+        })
+
+    var layer2 = document.getElementById('layer2')
+    scroll = window.pageYOffset;
+    document.addEventListener('scroll',
+        function (e) {
+            var offset = window.pageYOffset;
+            scroll = offset;
+            layer2.style.width = (100 + scroll / 5) + '%';
+            layer2.style.left = scroll / 50 + '%';
+        })
+
+    var text = document.getElementById('text')
+    scroll = window.pageYOffset;
+    document.addEventListener('scroll',
+        function (e) {
+            var offset = window.pageYOffset;
+            scroll = offset;
+            text.style.top = -scroll / 6 + '%';
+        })
+
+    let para = document.getElementById('desc');
+    const rules = {
+        SoloPlay: "The escape room is designed for a single player.",
+        TimeLimit: "Participants have a set time limit of 60 minutes to complete the challenge.",
+        Communication: "Players must focus on solving puzzles individually; no external assistance is allowed.",
+        TechRequirements: "A stable internet connection is required for participation.",
+        GameMasterInstructions: "The player follows instructions from the game master, who may provide hints or clarification.",
+        FairPlay: "Cheating is strictly prohibited, and players should rely only on the provided in-room information.",
+        RecordingScreenshots: "Recording or taking screenshots of the game is not allowed to maintain fairness and prevent spoilers."
+    };
+    function formatRules(rules) {
+        let formattedRules = "<ul>";
+        for (const rule in rules) {
+            formattedRules += `<li><strong>${rule}:</strong> ${rules[rule]}</li>`;
+        }
+        formattedRules += "</ul>";
+        return formattedRules;
+    }
+    function Rules(){
+        para.innerHTML = formatRules(rules);
+    }
+
+    var story = document.getElementById('desc');
+    var prevContent = story.innerHTML;
+    function About(){
+        story.innerHTML = prevContent;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'styles/bunker-room.css' %}">
+</head>
+<div class="container-x" id="thanks" style="display:None;">
+    <div>
+        <p class="escape">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="lucide lucide-party-popper">
+                <path d="M5.8 11.3 2 22l10.7-3.79"/>
+                <path d="M4 3h.01"/>
+                <path d="M22 8h.01"/>
+                <path d="M15 2h.01"/>
+                <path d="M22 20h.01"/>
+                <path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12v0c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"/>
+                <path d="m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11v0c-.11.7-.72 1.22-1.43 1.22H17"/>
+                <path d="m11 2 .33.82c.34.86-.2 1.82-1.11 1.98v0C9.52 4.9 9 5.52 9 6.23V7"/>
+                <path d="M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z"/>
+            </svg>
+            YOU ESCAPED
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="lucide lucide-party-popper">
+                <path d="M5.8 11.3 2 22l10.7-3.79"/>
+                <path d="M4 3h.01"/>
+                <path d="M22 8h.01"/>
+                <path d="M15 2h.01"/>
+                <path d="M22 20h.01"/>
+                <path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12v0c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"/>
+                <path d="m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11v0c-.11.7-.72 1.22-1.43 1.22H17"/>
+                <path d="m11 2 .33.82c.34.86-.2 1.82-1.11 1.98v0C9.52 4.9 9 5.52 9 6.23V7"/>
+                <path d="M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z"/>
+            </svg>
+        </p>
+        <p class="content-x">If you had fun and would like to see more games like this, please consideer supporting
+            us</p>
+        {#        <button class="thanks">Thank You</button>#}
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+        <div class="button-wrapper">
+            <button class="confetti-button">Thank You🎉</button>
+        </div>
+        <a href="{% url 'download_pdf' %}" download>
+            <button class="thanks">Download Your Game Stats</button>
+        </a>
+
+    </div>
+</div>
+<body id="image-container">
+
+<object type="image/svg+xml" data="{% static 'images/left.svg' %}" name="left"></object>
+<object type="image/svg+xml" data="{% static 'images/right.svg' %}" name="right"></object>
+<object type="image/svg+xml" data="{% static 'images/top.svg' %}" name="top"></object>
+<object type="image/svg+xml" data="{% static 'images/centre.svg' %}" name="top-centre"></object>
+<object type="image/svg+xml" data="{% static 'images/bottom.svg' %}" name="bottom"></object>
+<div class="timer" id="timer">00 : 00 : 00</div>
+
+{% block content %}
+
+{% endblock %}
+
+<div class="game-buttons">
+    <button id="coffeeButton"><img src="{% static 'images/hint.svg' %}" alt="Hint"></button>
+    <button id="coffeeButton" onclick="music()"><img src="{% static 'images/sound.svg' %}" id="soundImage" alt="Sound">
+    </button>
+    <button id="coffeeButton" onclick="toggleFullscreen()"><img src="{% static 'images/fullscreen.svg' %}"
+                                                                alt="Fullscreen"></button>
+    <a href="{% url 'home' %}">
+        <button id="coffeeButton"><img src="{% static 'images/home.svg' %}" alt="Home"></button>
+    </a>
+    {#    <button id="coffeeButton" onlick="toggleDisplay()"><img src="{% static 'images/menu.svg' %}" alt="Menu"></button>#}
+    <div>
+    </div>
+</div>
+<div class="messages" id="msg">
+    <div class="message" id="message-container" style="display:None;">
+        <object type="image/svg+xml" data="{% static 'images/message.svg' %}"></object>
+        <p id="message-content" class="clamp-3"></p>
+    </div>
+</div>
+<div id="video-container" style="width:0%;height:0%;">
+    <video id="music-player" autoplay loop plays-inline>
+        <source src="{% static 'pdf/music.mp3' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<script>
+    function music() {
+        var musicPlayer = document.getElementById('music-player');
+        var soundImage = document.getElementById('soundImage');
+        if (musicPlayer.paused) {
+            musicPlayer.play();
+            soundImage.src = "{% static 'images/sound.svg' %}";
+        } else {
+            musicPlayer.pause();
+            soundImage.src = "{% static 'images/mute.svg' %}";
+        }
+    }
+
+    function toggleDisplay() {
+        endGame()
+        var thanksDiv = document.getElementById('thanks');
+        thanksDiv.style.display = (thanksDiv.style.display === 'none') ? 'block' : 'none';
+
+        let canvas = document.createElement("canvas");
+        canvas.width = 800;
+        canvas.height = 800;
+        let container = document.getElementsByClassName("button-wrapper")[0];
+        container.appendChild(canvas);
+
+        let confetti_button = confetti.create(canvas);
+        confetti_button({
+            particleCount: 600,
+            spread: 600,
+            startVelocity: 15,
+            scalar: 0.9,
+            ticks: 900
+        }).then(() => container.removeChild(canvas));
+    }
+
+    document.addEventListener('keydown', function (event) {
+        if (event.ctrlKey && event.key === 'b') {
+            toggleDisplay();
+        }
+    });
+
+    document.getElementsByClassName("confetti-button")[0].addEventListener("click", () => {
+        let canvas = document.createElement("canvas");
+        canvas.width = 800;
+        canvas.height = 800;
+        let container = document.getElementsByClassName("button-wrapper")[0];
+        container.appendChild(canvas);
+
+        let confetti_button = confetti.create(canvas);
+        confetti_button({
+            particleCount: 300,
+            spread: 300,
+            startVelocity: 15,
+            scalar: 0.9,
+            ticks: 90
+        }).then(() => container.removeChild(canvas));
+    });
+
+    let timer = 0;
+    let startTime;
+    let puzzleTimes = {};
+
+    function startTimer() {
+        const storedStartTime = sessionStorage.getItem('startTime');
+        startTime = storedStartTime ? parseInt(storedStartTime, 10) : new Date().getTime();
+        timer = setInterval(updateTimer, 1000);
+    }
+
+    function updateTimer() {
+        sessionStorage.setItem('startTime', startTime.toString());
+        const currentTime = new Date().getTime();
+        const elapsedSeconds = Math.floor((currentTime - startTime) / 1000);
+
+        const minutes = Math.floor((elapsedSeconds % 3600) / 60); // Corrected line
+        const hours = Math.floor(elapsedSeconds / 3600);
+        const seconds = elapsedSeconds % 60;
+
+        document.getElementById('timer').innerHTML = `${hours < 1 ? '0' : ''}${hours} : ${minutes < 10 ? '0' : ''}${minutes} : ${seconds < 10 ? '0' : ''}${seconds}`;
+    }
+
+    function endGame() {
+        clearInterval(timer);
+
+        sessionStorage.setItem('puzzleTimes', JSON.stringify(puzzleTimes));
+        sessionStorage.setItem('startTime', startTime.toString());
+        recordPuzzleTime('puzzle2');
+        //add logic to send puzzleTimes to the backend
+        console.log('Puzzle Times:', puzzleTimes);
+
+        alert(`Game Over!\nTotal Time Taken: ${calculateTotalTime()} seconds`);
+    }
+
+    function recordPuzzleTime(puzzleId) {
+        const endTime = new Date().getTime();
+        const elapsedSeconds = Math.floor((endTime - startTime - timer) / 1000);
+
+        if (puzzleTimes[puzzleId]) {
+            puzzleTimes[puzzleId] += elapsedSeconds;
+        } else {
+            puzzleTimes[puzzleId] = elapsedSeconds;
+        }
+        startTime = endTime;
+    }
+
+    function calculateTotalTime() {
+        return Object.values(puzzleTimes).reduce((total, time) => total + time, 0);
+    }
+
+    function submitGame() {
+        endGame();
+
+        fetch('/submit_game/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                {#'X-CSRFToken': csrf_token, // Include CSRF token if using Django CSRF protection#}
+            },
+            body: JSON.stringify({puzzleTimes: puzzleTimes, totalSeconds: calculateTotalTime()}),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Server Response:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    window.onload = startTimer;
+
+    document.addEventListener('DOMContentLoaded', function () {
+        function displayMessage(message) {
+            document.getElementById('message-container').style.display = 'block';
+            document.getElementById('message-content').innerText = message;
+        }
+
+        function fetchMessage() {
+            fetch('/get_serial_message/')
+                .then(response => response.json())
+                .then(data => {
+                    displayMessage(data.message);
+                })
+                .catch(error => console.error('Error fetching message:', error));
+        }
+
+        fetchMessage();
+        setInterval(fetchMessage, 600000);
+    });
+</script>
+</body>
+</html>

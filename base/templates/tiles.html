@@ -1,42 +1,57 @@
 {% load static %}
-<div class="Tiles">
-    <div class="cards">
-
-        <div class="card" style="background-image:url({% static 'images/room.jpg' %})">
-            <div class="colour"></div>
-            <div class="card-text">
-                <h3>Tanjiro</h3>
-                <p>Breathing Technnique: <b>Water/Sun</b></p>
-            </div>
-            <div class="colour-bottom"></div>
-        </div>
-
-        <div class="card" style="background-image:url({% static 'images/room.jpg' %}">
-            <div class="colour"></div>
-            <div class="card-text">
-                <h3>Tanjiro</h3>
-                <p>Breathing Technnique: <b>Water/Sun</b></p>
-            </div>
-            <div class="colour-bottom"></div>
-        </div>
-
-        <div class="card nezuko" style="background-image:url({% static 'images/room.jpg' %}">
-            <div class="colour"></div>
-            <div class="card-text">
-                <h3>Nezuko</h3>
-                <p>Demon : Can do <b>blood magic</b>.</p>
-            </div>
-            <div class="colour-bottom"></div>
-        </div>
-
-        <div class="card zenitsu" style="background-image:url({% static 'images/room.jpg' %}">
-            <div class="colour"></div>
-            <div class="card-text">
-                <h3>Zenitsu</h3>
-                <p>Breathing Technnique: <b>Thunder</b></p>
-            </div>
-            <div class="colour-bottom"></div>
-        </div>
-    </div>
+<div style="display: flex; align-items: center; flex-direction: column;background-color:#14213d;margin-right:-8px;margin-left:-8px;"">
+<p style="font-family: 'IBM Plex Mono', monospace;
+            font-family: 'Josefin Sans', sans-serif;
+            font-family: 'Lexend Giga', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-family: 'Vollkorn SC', serif;;padding-top: 2%;margin:0%;background-color: #14213d;font-size: 400%;color: white;">
+    Escape Adventures</p>
+<p style="font-size: x-large;margin-bottom:0%;margin-top:0.5%;background-color: #14213d;
+            font-family: 'Exo 2', sans-serif;
+            font-family: 'IBM Plex Mono', monospace;
+            font-family: 'Josefin Sans', sans-serif;
+            font-family: 'Lexend Giga', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-family: 'Vollkorn SC', serif;
+            color: white;">Explore our captivating escape room and challenging puzzles</p>
 </div>
+<div class="Tiles" style="background-color:#14213d;width:101.2%;margin-left:-8px;">
+
+    <div class="cards">
+        <article class="card">
+            <div>
+                <img src="{% static 'images/forest.jpg' %}" alt="Mountain Echo">
+                <figcaption>
+
+                    <a href="{% url 'roomv' %}" style="text-decoration:None; color:white;"><h3>Mountain Echo</h3></a>
+                </figcaption>
+            </div>
+        </article>
+
+        <article class="card">
+            <div>
+                <img src="{% static 'images/lavender-field.jpg' %}" alt="Lavender Field">
+                <figcaption>
+                    <a href="{% url 'roomv3' %}" style="text-decoration:None; color:white;"><h3>Lavender Field</h3></a>
+                </figcaption>
+            </div>
+        </article>
+        <article class="card">
+            <div>
+                <img src="{% static 'images/wooden-bridge.jpg' %}" alt="Wooden Bridge">
+                <figcaption>
+                    <a href="{% url 'roomv2' %}" style="text-decoration:None; color:white;"><h3>Wooden Bridge</h3></a>
+                </figcaption>
+            </div>
+        </article>
+        <article class="card">
+            <div>
+                <img src="{% static 'images/library.jpg' %}" alt="Library">
+                <figcaption>
+                    <a href="{% url 'roomv2' %}" style="text-decoration:None; color:white;"><h3>Whispers in the Shadows</h3></a>
+                </figcaption>
+            </div>
+        </article>
+    </div>
+
 </div>

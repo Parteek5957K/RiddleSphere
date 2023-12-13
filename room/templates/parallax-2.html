@@ -1,0 +1,101 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+    <title>Parallax Scrolling Website using Vanilla JavaScript</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/parallax-2.css' %}">
+</head>
+<body>
+<header>
+    <a href="#" class="logo">Logo</a>
+    <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#" onclick="About()">About</a></li>
+        <li><a href="#" onclick="Rules()">Rules</a></li>
+    </ul>
+</header>
+<section>
+    <img src="{% static 'images/stars.png' %}" id="stars">
+    <img src="{% static 'images/moon.png' %}" id="moon">
+    <img src="{% static 'images/mountains_behind.png' %}" id="mountains_behind">
+    <h2 id="text">Whispers in the Shadows</h2>
+    <a href="{% url 'room-library' %}" id="btn">Explore</a>
+    <img src="{% static 'images/mountains_front.png' %}" id="mountains_front">
+</section>
+<div class="sec" id="sec">
+    <h2>Whispers in the Shadows</h2>
+    <p id="desc">In the heart of Ravenbrook, a small town shrouded in an eternal night, stands an ancient library known as the
+        Obsidian Archives. Legend has it that the library harbors a dark secret — a forbidden knowledge that has been
+        hidden away for centuries. The townsfolk avoid the place, claiming that the library is haunted by the whispers
+        of the past.<br><br>
+        You, a daring adventurer with a penchant for unraveling mysteries, find yourself drawn to the ominous allure of
+        the Obsidian Archives. One stormy night, seeking refuge from the rain, you step inside, and the heavy door
+        creaks closed behind you, trapping you in a dimly lit labyrinth of dusty shelves.<br><br>
+        As you explore the library, you come across a tablet left on a weathered table. It flickers to life, displaying
+        a message from a previous visitor, a researcher named Professor Evelyn Blackwell. She had come in search of a
+        fabled artifact, said to hold the power to control shadows. However, she warns that unlocking this power comes
+        at a perilous cost.<br><br>
+        Before Professor Blackwell could complete her warning, a malevolent force descended upon the library, plunging
+        it into darkness. The tablet is now your only source of light and guidance. To escape, you must follow in
+        Professor Blackwell's footsteps, solving puzzles and deciphering cryptic messages she left behind.<br><br>
+        The tablet, your only lifeline in this eerie quest, holds the key to unlocking the ancient magic that binds you
+        to the library. Can you solve the puzzles, navigate the shadows, and escape the clutches of the Obsidian
+        Archives before the night becomes your eternal prison?
+    </p>
+</div>
+<div class="button-container">
+    <a href="{% url 'room-library' %}">
+        <button class="button">Start →<span></span></button>
+    </a>
+</div>
+<script>
+    let para = document.getElementById('desc');
+    const rules = {
+        SoloPlay: "The escape room is designed for a single player.",
+        TimeLimit: "Participants have a set time limit of 60 minutes to complete the challenge.",
+        Communication: "Players must focus on solving puzzles individually; no external assistance is allowed.",
+        TechRequirements: "A stable internet connection is required for participation.",
+        GameMasterInstructions: "The player follows instructions from the game master, who may provide hints or clarification.",
+        FairPlay: "Cheating is strictly prohibited, and players should rely only on the provided in-room information.",
+        RecordingScreenshots: "Recording or taking screenshots of the game is not allowed to maintain fairness and prevent spoilers."
+    };
+    function formatRules(rules) {
+        let formattedRules = "<ul>";
+        for (const rule in rules) {
+            formattedRules += `<li><strong>${rule}:</strong> ${rules[rule]}</li>`;
+        }
+        formattedRules += "</ul>";
+        return formattedRules;
+    }
+    function Rules(){
+        para.innerHTML = formatRules(rules);
+    }
+
+    var story = document.getElementById('desc');
+    var prevContent = story.innerHTML;
+    function About(){
+        story.innerHTML = prevContent;
+    }
+
+    let stars = document.getElementById('stars');
+    let moon = document.getElementById('moon');
+    let mountains_behind = document.getElementById('mountains_behind');
+    let text = document.getElementById('text');
+    let btn = document.getElementById('btn');
+    let mountains_front = document.getElementById('mountains_front');
+    let header = document.querySelector('header');
+
+    window.addEventListener('scroll', function () {
+        let value = window.scrollY;
+        stars.style.left = value * 0.25 + 'px';
+        moon.style.top = value * 1.05 + 'px';
+        mountains_behind.style.top = value * 0.5 + 'px';
+        mountains_front.style.top = value * 0 + 'px';
+        text.style.marginRight = value * 4 + 'px';
+        text.style.marginTop = value * 1.5 + 'px';
+        btn.style.marginTop = value * 1.5 + 'px';
+        header.style.top = value * 0.5 + 'px';
+    })
+</script>
+</body>
+</html>

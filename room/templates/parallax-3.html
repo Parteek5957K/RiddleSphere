@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape room website</title>
+    <link rel="stylesheet" href="{% static 'styles/parallax-3.css' %}">
+</head>
+<body>
+<header>
+    <h2 class="logo">Logo</h2>
+    <nav class="navigation">
+        <a href="#" class="active">Home<span></span></a>
+        <a href="#" onclick="About()">About<span></span></a>
+        <a href="#" onclick="Rules()">Rules<span></span></a>
+
+    </nav>
+</header>
+<section class="parallax" style="background:url({% static 'images/p3/background.png' %}) no-repeat;">
+    <h2 id="text">Escape room website</h2>
+    <img src="{% static 'images/p3/tree-left.png' %}" id="tree-left">
+    <img src="{% static 'images/p3/tree-right.png' %}" id="tree-right">
+    <img src="{% static 'images/p3/gate-left.png' %}" id="gate-left">
+    <img src="{% static 'images/p3/gate-right.png' %}" id="gate-right">
+    <img src="{% static 'images/p3/grass.png' %}" id="grass">
+</section>
+<section class="sec">
+    <h2>Parallax Scrolling Website</h2>
+    <p id="desc">In the heart of Ravenbrook, a small town shrouded in an eternal night, stands an ancient library known as the
+        Obsidian Archives. Legend has it that the library harbors a dark secret — a forbidden knowledge that has been
+        hidden away for centuries. The townsfolk avoid the place, claiming that the library is haunted by the whispers
+        of the past.<br><br>
+        You, a daring adventurer with a penchant for unraveling mysteries, find yourself drawn to the ominous allure of
+        the Obsidian Archives. One stormy night, seeking refuge from the rain, you step inside, and the heavy door
+        creaks closed behind you, trapping you in a dimly lit labyrinth of dusty shelves.<br><br>
+        As you explore the library, you come across a tablet left on a weathered table. It flickers to life, displaying
+        a message from a previous visitor, a researcher named Professor Evelyn Blackwell. She had come in search of a
+        fabled artifact, said to hold the power to control shadows. However, she warns that unlocking this power comes
+        at a perilous cost.<br><br>
+        Before Professor Blackwell could complete her warning, a malevolent force descended upon the library, plunging
+        it into darkness. The tablet is now your only source of light and guidance. To escape, you must follow in
+        Professor Blackwell's footsteps, solving puzzles and deciphering cryptic messages she left behind.<br><br>
+        The tablet, your only lifeline in this eerie quest, holds the key to unlocking the ancient magic that binds you
+        to the library. Can you solve the puzzles, navigate the shadows, and escape the clutches of the Obsidian
+        Archives before the night becomes your eternal prison?
+    </p>
+</section>
+<div class="button-container">
+    <a href="{% url 'room-bunker' %}">
+        <button class="button">Start →<span></span></button>
+    </a>
+</div>
+<script>
+    let para = document.getElementById('desc');
+    const rules = {
+        SoloPlay: "The escape room is designed for a single player.",
+        TimeLimit: "Participants have a set time limit of 60 minutes to complete the challenge.",
+        Communication: "Players must focus on solving puzzles individually; no external assistance is allowed.",
+        TechRequirements: "A stable internet connection is required for participation.",
+        GameMasterInstructions: "The player follows instructions from the game master, who may provide hints or clarification.",
+        FairPlay: "Cheating is strictly prohibited, and players should rely only on the provided in-room information.",
+        RecordingScreenshots: "Recording or taking screenshots of the game is not allowed to maintain fairness and prevent spoilers."
+    };
+
+    function formatRules(rules) {
+        let formattedRules = "<ul>";
+        for (const rule in rules) {
+            formattedRules += `<li><strong>${rule}:</strong> ${rules[rule]}</li>`;
+        }
+        formattedRules += "</ul>";
+        return formattedRules;
+    }
+
+    function Rules() {
+        para.innerHTML = formatRules(rules);
+    }
+
+    var story = document.getElementById('desc');
+    var prevContent = story.innerHTML;
+
+    function About() {
+        story.innerHTML = prevContent;
+    }
+
+    let text = document.getElementById('text');
+    let treeLeft = document.getElementById('tree-left');
+    let treeRight = document.getElementById('tree-right');
+    let gateLeft = document.getElementById('gate-left');
+    let gateRight = document.getElementById('gate-right');
+
+    window.addEventListener('scroll', () => {
+        let value = window.scrollY;
+
+        text.style.marginTop = value * 2.5 + 'px';
+        treeLeft.style.left = value * -1.5 + 'px';
+        treeRight.style.left = value * 1.5 + 'px';
+        gateLeft.style.left = value * 0.5 + 'px';
+        gateRight.style.left = value * -0.5 + 'px';
+    })
+
+</script>
+
+</body>
+</html>

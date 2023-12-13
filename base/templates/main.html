@@ -4,8 +4,18 @@
 <head>
     <title>RiddleSphere - Homepage</title>
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}"/>
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&family=Josefin+Sans:wght@100&family=Lexend+Giga&family=Noto+Sans+KR&family=Vollkorn+SC:wght@700&display=swap"
+          rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital@1&family=IBM+Plex+Mono:wght@600&family=Josefin+Sans:wght@100&family=Lexend+Giga&family=Noto+Sans+KR&family=Vollkorn+SC:wght@700&display=swap"
+          rel="stylesheet">
 </head>
 <body>
+
 {% include 'navbar.html' %}
 {% if not request.user.is_authenticated %}
     {% include 'login.html' %}
@@ -21,6 +31,7 @@
 {% block content %}
 
 {% endblock %}
+
 <script src="{% static 'script/script.js' %}"></script>
 </body>
 </html>

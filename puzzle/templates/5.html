@@ -1,0 +1,28 @@
+{% load static %}
+<div>
+        <p class="name-ask">Alright, imagine you're at a never-ending carnival ride called Modular Arithmetic Land!
+In this crazy land, numbers follow a special rule: they always go in circles!
+Let's say we're on a Ferris wheel that has 12 seats. When it goes around, it counts from 1 to 12. But here's the twist: once it reaches 12, it starts back at 1! It's like a looping roller coaster for numbers!
+That's modular arithmetic for you! It's like doing math in a magical world where numbers can't go beyond a certain limit. They keep looping around, having a wild time on their numerical journey.
+So, when you see something like "15 modulo 12," it means you're asking, "Which seat would the number 15 be on the Ferris wheel?"
+Since the Ferris wheel has only 12 seats, the answer is seat number 3!
+Modular arithmetic helps us find these "magical seats" where numbers end up when they go on their looping adventures. It's a playful way to understand how numbers behave in their own amusement park!
+Now hop on the ride and enjoy the mathematical madness of modular arithmetic!
+In python "%" is used for mod</p>
+        <p class="just"># chall.py
+<br>flag = #######redacted#######
+<br>flag = flag.encode()
+<br>l = [i%97 for i in flag]
+<br>print(l)
+<br># [5, 11, 0, 6, 26, 77, 48, 3, 20, 49, 48, 95, 12, 52, 10, 51, 18, 95, 55, 7, 8, 13, 6, 18, 95, 11, 48, 48, 15,28]</p>
+        <div>
+            <img class="images" src="{% static 'images/4.jpg' %}" alt="">
+        </div>
+        <div class="input-field">
+            <input id="answer" type="text" placeholder="Type your answer here..." required>
+            <i class="uil uil-envelope icon"></i>
+        </div>
+        <p></p>
+        <button class="OK" onclick="checkAnswer()">OK &check;</button>
+        <p class="enter">press <strong>Enter ↵</strong></p>
+    </div>

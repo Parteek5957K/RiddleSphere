@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'styles/quiz.css' %}">
+</head>
+<body>
+<body>
+<div class="container" id="puzzle-content" style="margin-left:5%;">
+    {% include '1.html' %}
+</div>
+<div class="ButtonsWrapper-sc-__sc-1ckh2u2-2 kFDtMt snipcss-GzEmg">
+    <div class="LeftButtonsWrapper-sc-__sc-1ckh2u2-5 foyahR">
+        <nav class="Navigation-sc-__sc-1ckh2u2-4 bwYInh">
+            <button data-qa="fixed-footer-navigation-next" aria-label="Navigate to next question"
+                    data-tracking="footer_arrow_down" class="ButtonWrapper-sc-__sc-1qu8p4z-0 jyMyxn"
+                    onclick="loadPuzzle('forward')"><span
+                    class="FlexWrapper-sc-__sc-1qu8p4z-1 hSBRqm"><span
+                    class="ButtonTextWrapper-sc-__sc-1qu8p4z-4 ffdgGn"><span
+                    class="TextWrapper-sc-__sc-1f8vz90-0 bzehgl"></span></span><span
+                    class="Spacer-sc-__sc-1fl5ef-0 hmVfJe"><span class="IconWrapper-sc-__sc-1qu8p4z-5 csgEuC"><span
+                    class="Boundary-sc-__sc-184gmm6-0 crSNMw"><svg height="9" width="14">
+                                    <path d="M12.293.293l1.414 1.414L7 8.414.293 1.707 1.707.293 7 5.586z"></path>
+                                </svg></span></span></span></span></button>
+            <div class="ButtonDivider-sc-__sc-1ckh2u2-3 fBnpk"></div>
+            <button data-qa="fixed-footer-navigation-previous" aria-label="Navigate to previous question"
+                    data-tracking="footer_arrow_up" class="ButtonWrapper-sc-__sc-1qu8p4z-0 kCLWDv"
+                    onclick="loadPuzzle('backward')"><span
+                    class="FlexWrapper-sc-__sc-1qu8p4z-1 hSBRqm"><span
+                    class="ButtonTextWrapper-sc-__sc-1qu8p4z-4 ffdgGn"><span
+                    class="TextWrapper-sc-__sc-1f8vz90-0 bzehgl"></span></span><span
+                    class="Spacer-sc-__sc-1fl5ef-0 hmVfJe"><span class="IconWrapper-sc-__sc-1qu8p4z-5 csgEuC"><span
+                    class="Boundary-sc-__sc-184gmm6-0 crSNMw"><svg height="9" width="14">
+                                    <path d="M11.996 8.121l1.414-1.414L6.705 0 0 6.707l1.414 1.414 5.291-5.293z"></path>
+                                </svg></span></span></span></span></button>
+        </nav>
+    </div>
+    <a href="https://www.typeform.com/explore/?utm_campaign=kxDHAz&amp;utm_source=typeform.com-149185-enterprise&amp;utm_medium=typeform&amp;utm_content=typeform-footer&amp;utm_term=EN"
+       rel="noopener noreferrer" target="_blank"
+       class="ButtonWrapper-sc-__sc-1qu8p4z-0 dSgNoa BrandButton-sc-__sc-1ckh2u2-6 cJwpQj"><span
+            class="FlexWrapper-sc-__sc-1qu8p4z-1 lnoWON"><span class="ButtonTextWrapper-sc-__sc-1qu8p4z-4 ffdgGn"><span
+            class="TextWrapper-sc-__sc-1f8vz90-0 bzehgl"><span data-qa="fixed-footer-brand-button"><span
+            class="TextWrapper-sc-__sc-1f8vz90-0 hltsNr">Powered by <strong>RiddleSphere</strong></span></span></span></span></span></a>
+</div>
+<script src="{% static 'script/quiz.js' %}"></script>
+</body>
+</html>
